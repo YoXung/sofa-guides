@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.monodon.sofastack</groupId>
-        <artifactId>sofa-sample</artifactId>
+        <artifactId>sofa-guides</artifactId>
         <version>${revision}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
@@ -18,15 +18,35 @@
         <module>sofa-sample-isle-consumer</module>
         <module>sofa-sample-isle-facade</module>
         <module>sofa-sample-isle-provider</module>
-        <module>sofa-sample-isle-run</module>
+        <module>sofa-sample-isle-bootstrap</module>
     </modules>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.monodon.sofastack</groupId>
+                <artifactId>sofa-sample-isle-consumer</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.monodon.sofastack</groupId>
+                <artifactId>sofa-sample-isle-facade</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.monodon.sofastack</groupId>
+                <artifactId>sofa-sample-isle-provider</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.monodon.sofastack</groupId>
+                <artifactId>sofa-sample-isle-bootstrap</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
+    <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-docker-compose</artifactId>

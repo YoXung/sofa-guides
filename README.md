@@ -1,10 +1,12 @@
 
 # SOFAstack Learning
 [![java](https://img.shields.io/badge/Java-17.0.11-F80000?logo=oracle)](https://www.oracle.com/cn/java/technologies/downloads/)
-[![maven](https://img.shields.io/badge/Apache_Maven-3.9.6-C71A36?logo=apachemaven)](https://maven.apache.org/download.cgi)
+[![maven](https://img.shields.io/badge/Apache_Maven-3.9.7-C71A36?logo=apachemaven)](https://maven.apache.org/download.cgi)
 
 [![sofa](https://img.shields.io/badge/SOFAStack-4.0.0-1677FF?logo=Alipay)](https://www.sofastack.tech)
-[![springboot](https://img.shields.io/badge/Spring_Boot-3.2.5-6DB33F?logo=springboot)](https://spring.io/projects/spring-boot#learn)
+[![springboot](https://img.shields.io/badge/Spring_Boot-3.3.0-6DB33F?logo=springboot)](https://spring.io/projects/spring-boot#learn)
+
+[![idea](https://img.shields.io/badge/IntelliJ_IDEA-2024.1.2-000000?logo=intellijidea)](https://www.jetbrains.com/idea/)
 
 SOFAStack™（Scalable Open Financial Architecture Stack）作为蚂蚁科技自主研发的金融级分布式中间件，被广泛应用在包括支付、借贷、信用、基金、保险等全金融场景。
 
@@ -65,7 +67,7 @@ SOFAStack™（Scalable Open Financial Architecture Stack）作为蚂蚁科技�
 
 ### 工程结构
 ```
-sofa-sample 
+sofa-guides 
 ├── sofa-sample-gateway 
 ├── sofa-sample-ddd 
 ├── sofa-sample-rpc 
@@ -81,4 +83,10 @@ sofa-sample
 |   ├── sofa-sample-registry-client     
 |   └── sofa-sample-registry-server
 └──
+```
+
+### SOFA依赖关系
+```mermaid
+flowchart BT
+    rpc-enterprise-sofa-boot-starter --> sofa-boot-enterprise-starters --> sofa-boot-enterprise-parent --> sofaboot-enterprise-dependencies --> sofaboot-dependencies --> sofa-boot-project --> sofa-boot-build --> spring-boot-starter-parent --> spring-boot-dependencies 
 ```
