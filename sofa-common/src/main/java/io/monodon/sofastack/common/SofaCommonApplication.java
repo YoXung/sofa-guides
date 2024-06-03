@@ -1,13 +1,13 @@
-package io.monodon.sofastack.sample.isle.provider;
+package io.monodon.sofastack.common;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SofaSampleIsleProviderApplication {
+public class SofaCommonApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SofaSampleIsleProviderApplication.class, args);
+        SpringApplication.run(SofaCommonApplication.class, args);
     }
 
 }

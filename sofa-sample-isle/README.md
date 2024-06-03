@@ -23,7 +23,7 @@
 
 ## 定义服务 API
 
-service-facade 模块包含用于演示 JVM 服务发布与引用的 API :
+sofa-sample-isle-facade 模块包含用于演示 JVM 服务发布与引用的 API :
 
 ```java
 public interface IsleJvmService {
@@ -33,22 +33,22 @@ public interface IsleJvmService {
 
 ## 发布 JVM 服务
 
-service-provider 是一个 SOFABoot 模块，用于演示 XML 方式、Annotation 方式、API 方式发布 JVM 服务。
+sofa-sample-isle-provider 是一个 SOFABoot 模块，用于演示 XML 方式、Annotation 方式、API 方式发布 JVM 服务。
 
 ### 定义 SOFABoot 模块
 
-为 service-provider 模块增加 sofa-module.properties 文件，将其定义为 SOFABoot 模块:
+为 sofa-sample-isle-provider 模块增加 sofa-module.properties 文件，将其定义为 SOFABoot 模块:
 
 ```properties
-Module-Name=com.alipay.sofa.service-provider
+Module-Name=io.monodon.sofastack.sofa-sample-isle-provider
 ```
 
 ### XML 方式发布服务
 
-实现 SampleJvmService 接口:
+实现 IsleJvmService 接口:
 
 ```java
-public class SampleJvmServiceImpl implements SampleJvmService {
+public class IsleJvmServiceImpl implements IsleJvmService {
     private String message;
 
     @Override
@@ -61,25 +61,25 @@ public class SampleJvmServiceImpl implements SampleJvmService {
 }
 ```
 
-增加 META-INF/spring/service-provide.xml 文件，将 SampleJvmServiceImpl 发布为 JVM 服务:
+增加 META-INF/spring/sofa-sample-isle-provider.xml 文件，将 IsleJvmServiceImpl 发布为 JVM 服务:
 
 ```xml
-<bean id="sampleJvmService" class="com.alipay.sofa.isle.sample.provider.SampleJvmServiceImpl">
+<bean id="sampleJvmService" class="io.monodon.sofastack.sample.isle.provider.domain.IsleJvmServiceImpl">
     <property name="message" value="Hello, jvm service xml implementation."/>
 </bean>
 
-<sofa:service ref="sampleJvmService" interface="com.alipay.sofa.isle.sample.facade.SampleJvmService">
+<sofa:service ref="sampleJvmService" interface="io.monodon.sofastack.sample.isle.facade.IsleJvmService">
     <sofa:binding.jvm/>
 </sofa:service>
 ```
 
 ### Annotation 方式发布服务
 
-实现 SampleJvmService 接口并增加 @SofaService 注解:
+实现 IsleJvmService 接口并增加 @SofaService 注解:
 
 ```java
 @SofaService(uniqueId = "annotationImpl")
-public class SampleJvmServiceAnnotationImpl implements SampleJvmService {
+public class IsleJvmServiceAnnotationImpl implements IsleJvmService {
     @Override
     public String message() {
         String message = "Hello, jvm service annotation implementation.";
@@ -91,10 +91,10 @@ public class SampleJvmServiceAnnotationImpl implements SampleJvmService {
 
 为了区分 XML 方式发布的 JVM 服务，注解上需要增加 uniqueId 属性。
 
-将 SampleJvmServiceAnnotationImpl 配置成一个 Spring Bean，保证 @SofaService 注解生效:
+将 IsleJvmServiceAnnotationImpl 配置成一个 Spring Bean，保证 @SofaService 注解生效:
 
 ```xml
-<bean id="sampleJvmServiceAnnotation" class="com.alipay.sofa.isle.sample.provider.SampleJvmServiceAnnotationImpl"/>
+<bean id="sampleJvmServiceAnnotation" class="io.monodon.sofastack.sample.isle.provider.domain.IsleJvmServiceAnnotationImpl"/>
 ```
 
 ### API 方式发布服务
@@ -108,9 +108,9 @@ public class PublishServiceWithClient implements ClientFactoryAware {
     public void init() {
         ServiceClient serviceClient = clientFactory.getClient(ServiceClient.class);
         ServiceParam serviceParam = new ServiceParam();
-        serviceParam.setInstance(new SampleJvmServiceImpl(
+        serviceParam.setInstance(new IsleJvmServiceImpl(
             "Hello, jvm service service client implementation."));
-        serviceParam.setInterfaceType(SampleService.class);
+        serviceParam.setInterfaceType(IsleService.class);
         serviceParam.setUniqueId("serviceClientImpl");
         serviceClient.service(serviceParam);
     }
@@ -125,66 +125,66 @@ public class PublishServiceWithClient implements ClientFactoryAware {
 将 PublishServiceWithClient 配置为 Spring Bean，并设置 init-method ，使PublishServiceWithClient 在 Spring 刷新时发布服务:
 
 ```xml
-<bean id="publishServiceWithClient" class="com.alipay.sofa.isle.sample.provider.PublishServiceWithClient" init-method="init"/>
+<bean id="publishServiceWithClient" class="io.monodon.sofastack.sample.isle.provider.domain.PublishServiceWithClient" init-method="init"/>
 ```
 
 ## 引用 JVM 服务
 
-service-consumer 是一个 SOFABoot 模块，用于演示 XML 方式、Annotation 方式、API 方式引用 JVM 服务。
+sofa-sample-isle-consumer 是一个 SOFABoot 模块，用于演示 XML 方式、Annotation 方式、API 方式引用 JVM 服务。
 
 ### 定义 SOFABoot 模块
 
-为 service-consumer 模块增加 sofa-module.properties 文件，将其定义为 SOFABoot 模块:
+为 sofa-sample-isle-consumer 模块增加 sofa-module.properties 文件，将其定义为 SOFABoot 模块:
 
 ```properties
-Module-Name=com.alipay.sofa.service-consumer
-Require-Module=com.alipay.sofa.service-provider
+Module-Name=io.monodon.sofastack.sofa-sample-isle-consumer
+Require-Module=io.monodon.sofastack.sofa-sample-isle-provider
 ```
 
-在 sofa-module.properties 文件中需要指定 Require-Module，保证 service-provider 模块在 service-consumer 模块之前刷新。
+在 sofa-module.properties 文件中需要指定 Require-Module，保证 sofa-sample-isle-provider 模块在 sofa-sample-isle-consumer 模块之前刷新。
 
 ### XML 方式引用服务
 
-增加 META-INF/spring/service-consumer.xml 文件，引用 service-provider 模块发布的服务:
+增加 META-INF/spring/sofa-sample-isle-consumer.xml 文件，引用 sofa-sample-isle-provider 模块发布的服务:
 
 ```xml
-<sofa:reference id="sampleJvmService" interface="com.alipay.sofa.isle.sample.facade.SampleJvmService">
+<sofa:reference id="isleJvmService" interface="io.monodon.sofastack.sample.isle.facade.IsleJvmService">
     <sofa:binding.jvm/>
 </sofa:service>
 ```
 
 ### Annotation 方式引用服务
 
-定义 JvmServiceConsumer 类，并在其 sampleJvmServiceAnnotationImpl 属性上增加 @SofaReference 注解:
+定义 IsleJvmCosumer 类，并在其 isleJvmServiceAnnotationImpl 属性上增加 @SofaReference 注解:
 
 ```java
-public class JvmServiceConsumer implements ClientFactoryAware {
+public class IsleJvmCosumer implements ClientFactoryAware {
     @SofaReference(uniqueId = "annotationImpl")
-    private SampleJvmService sampleJvmServiceAnnotationImpl;
+    private IsleJvmService isleJvmServiceByFieldAnnotation;
 }
 ```
 
-将 JvmServiceConsumer 配置成一个 Spring Bean，保证 @SofaReference 注解生效:
+将 IsleJvmCosumer 配置成一个 Spring Bean，保证 @SofaReference 注解生效:
 
 ```xml
-<bean id="consumer" class="com.alipay.sofa.isle.sample.consumer.JvmServiceConsumer" init-method="init" />
+<bean id="consumer" class="io.monodon.sofastack.sample.isle.consumer.bff.IsleJvmCosumer" init-method="init" />
 ```
 
 ### API 方式引用服务
 
-JvmServiceConsumer 实现 ClientFactoryAware 接口，并在其 init 方法中引用 JVM 服务:
+IsleJvmCosumer 实现 ClientFactoryAware 接口，并在其 init 方法中引用 JVM 服务:
 
 ```java
-public class JvmServiceConsumer implements ClientFactoryAware {
-    private ClientFactory    clientFactory;
+public class IsleJvmCosumer implements ClientFactoryAware {
+    private ClientFactory clientFactory;
 
     public void init() {
         ReferenceClient referenceClient = clientFactory.getClient(ReferenceClient.class);
-        ReferenceParam<SampleJvmService> referenceParam = new ReferenceParam<>();
-        referenceParam.setInterfaceType(SampleJvmService.class);
+        ReferenceParam<IsleJvmService> referenceParam = new ReferenceParam<>();
+        referenceParam.setInterfaceType(IsleJvmService.class);
         referenceParam.setUniqueId("serviceClientImpl");
-        SampleJvmService sampleJvmServiceClientImpl = referenceClient.reference(referenceParam);
-        sampleJvmServiceClientImpl.message();
+        IsleJvmService isJvmServiceClientImpl = referenceClient.reference(referenceParam);
+        isJvmServiceClientImpl.message();
     }
 
     @Override
@@ -205,7 +205,7 @@ public class JvmServiceConsumer implements ClientFactoryAware {
 </parent>
 ```
 
-为模块增加 isle-sofa-boot-starter 及 service-provider 、 service-consumer 依赖:
+为模块增加 isle-sofa-boot-starter 及 sofa-sample-isle-provider 、 sofa-sample-isle-consumer 依赖:
 
 ```xml
 <dependency>
@@ -213,12 +213,12 @@ public class JvmServiceConsumer implements ClientFactoryAware {
     <artifactId>isle-sofa-boot-starter</artifactId>
 </dependency>
 <dependency>
-    <groupId>com.alipay.sofa</groupId>
-    <artifactId>service-provider</artifactId>
+    <groupId>io.monodon.sofastack</groupId>
+    <artifactId>sofa-sample-isle-provider</artifactId>
 </dependency>
 <dependency>
-    <groupId>com.alipay.sofa</groupId>
-    <artifactId>service-consumer</artifactId>
+    <groupId>io.monodon.sofastack</groupId>
+    <artifactId>sofa-sample-isle-consumer</artifactId>
 </dependency>
 ```
 
@@ -228,27 +228,27 @@ public class JvmServiceConsumer implements ClientFactoryAware {
 @RestController
 public class TestController {
     @SofaReference
-    private SampleJvmService sampleJvmService;
+    private IsleJvmService isleJvmService;
 
     @SofaReference(uniqueId = "annotationImpl")
-    private SampleJvmService sampleJvmServiceAnnotationImpl;
+    private IsleJvmService isleJvmServiceAnnotationImpl;
 
     @SofaReference(uniqueId = "serviceClientImpl")
-    private SampleJvmService sampleJvmServiceClientImpl;
+    private IsleJvmService isleJvmServiceClientImpl;
 
     @RequestMapping("/serviceWithoutUniqueId")
     public String serviceWithoutUniqueId() throws IOException {
-        return sampleJvmService.message();
+        return isleJvmService.message();
     }
 
     @RequestMapping("/annotationImplService")
     public String annotationImplService() throws IOException {
-        return sampleJvmServiceAnnotationImpl.message();
+        return isleJvmServiceAnnotationImpl.message();
     }
 
     @RequestMapping("/serviceClientImplService")
     public String serviceClientImplService() throws IOException {
-        return sampleJvmServiceClientImpl.message();
+        return isleJvmServiceClientImpl.message();
     }
 }
 ```
@@ -264,21 +264,21 @@ SOFABoot 模块化测试方法与 Spring Boot 测试方法一致，只需在测�
 @RunWith(SpringRunner.class)
 public class SofaBootWithModulesTest {
     @SofaReference
-    private SampleJvmService sampleJvmService;
+    private IsleJvmService isleJvmService;
 
     @SofaReference(uniqueId = "annotationImpl")
-    private SampleJvmService sampleJvmServiceAnnotationImpl;
+    private IsleJvmService isleJvmServiceAnnotationImpl;
 
     @SofaReference(uniqueId = "serviceClientImpl")
-    private SampleJvmService sampleJvmServiceClientImpl;
+    private IsleJvmService isleJvmServiceClientImpl;
 
     @Test
     public void test() {
-        Assert.assertEquals("Hello, jvm service xml implementation.", sampleJvmService.message());
+        Assert.assertEquals("Hello, jvm service xml implementation.", isleJvmService.message());
         Assert.assertEquals("Hello, jvm service annotation implementation.",
-            sampleJvmServiceAnnotationImpl.message());
+                isleJvmServiceAnnotationImpl.message());
         Assert.assertEquals("Hello, jvm service service client implementation.",
-            sampleJvmServiceClientImpl.message());
+                isleJvmServiceClientImpl.message());
     }
 }
 ```

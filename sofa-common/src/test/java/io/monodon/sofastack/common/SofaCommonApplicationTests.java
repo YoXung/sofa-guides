@@ -1,10 +1,10 @@
-package io.monodon.sofastack.sample.isle.consumer;
+package io.monodon.sofastack.common;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SofaSampleIsleConsumerApplicationTests {
+class SofaCommonApplicationTests {
 
     @Test
     void contextLoads() {

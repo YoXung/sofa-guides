@@ -23,6 +23,7 @@
         <module>sofa-sample-ddd</module>
         <module>sofa-sample-gateway</module>
         <module>sofa-sample-registry</module>
+        <module>sofa-common</module>
     </modules>
 
     <dependencyManagement>

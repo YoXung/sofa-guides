@@ -78,7 +78,7 @@ sofa-guides
 |   ├── sofa-sample-isle-consumer     
 |   ├── sofa-sample-isle-facade
 |   ├── sofa-sample-isle-provider
-|   └── sofa-sample-isle-run
+|   └── sofa-sample-isle-bootstrap
 ├── sofa-sample-registry 
 |   ├── sofa-sample-registry-client     
 |   └── sofa-sample-registry-server
