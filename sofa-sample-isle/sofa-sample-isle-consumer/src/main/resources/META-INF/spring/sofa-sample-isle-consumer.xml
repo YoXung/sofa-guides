@@ -10,5 +10,5 @@
         <sofa:binding.jvm/>
     </sofa:reference>
 
-    <bean id="consumer" class="io.monodon.sofastack.sample.isle.consumer.bff.IsleJvmCosumer" init-method="init" />
+    <bean id="consumer" class="io.monodon.sofastack.sample.isle.consumer.bff.IsleJvmConsumer" init-method="init" />
 </beans>

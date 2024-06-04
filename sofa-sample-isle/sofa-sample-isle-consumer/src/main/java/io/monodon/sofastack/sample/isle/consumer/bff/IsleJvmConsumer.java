@@ -10,20 +10,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @author yaoxiang
- * @description
+ * @description api调用
  * @date 2024/5/27 下午11:13
  */
-public class IsleJvmCosumer implements ClientFactoryAware {
+public class IsleJvmConsumer implements ClientFactoryAware {
     private ClientFactory clientFactory;
 
     @Autowired
     private IsleJvmService isleJvmService;
 
     @SofaReference(uniqueId = "annotationImpl")
-    private IsleJvmService isleJvmServiceByFieldAnnotation;
+    private IsleJvmService isleJvmServiceAnnotation;
     public void init() {
         isleJvmService.message();
-        isleJvmServiceByFieldAnnotation.message();
+        isleJvmServiceAnnotation.message();
 
         ReferenceClient referenceClient = clientFactory.getClient(ReferenceClient.class);
         ReferenceParam<IsleJvmService> referenceParam = new ReferenceParam<IsleJvmService>();
@@ -32,7 +32,6 @@ public class IsleJvmCosumer implements ClientFactoryAware {
         IsleJvmService isleJvmServiceClientImpl = referenceClient.reference(referenceParam);
         isleJvmServiceClientImpl.message();
     }
-
 
     @Override
     public void setClientFactory(ClientFactory clientFactory) {

@@ -12,7 +12,7 @@ import io.monodon.sofastack.sample.isle.facade.IsleJvmService;
 public class IsleJvmServiceAnnotationImpl implements IsleJvmService {
     @Override
     public String message() {
-        String message = "Hello, jvm service annotation implementation.";
+        String message = "Hello, jvm service 注解方式实现.";
         System.out.println(message);
         return message;
     }

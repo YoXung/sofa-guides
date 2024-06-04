@@ -64,11 +64,11 @@ public class IsleJvmServiceImpl implements IsleJvmService {
 增加 META-INF/spring/sofa-sample-isle-provider.xml 文件，将 IsleJvmServiceImpl 发布为 JVM 服务:
 
 ```xml
-<bean id="sampleJvmService" class="io.monodon.sofastack.sample.isle.provider.domain.IsleJvmServiceImpl">
+<bean id="isleJvmService" class="io.monodon.sofastack.sample.isle.provider.domain.IsleJvmServiceImpl">
     <property name="message" value="Hello, jvm service xml implementation."/>
 </bean>
 
-<sofa:service ref="sampleJvmService" interface="io.monodon.sofastack.sample.isle.facade.IsleJvmService">
+<sofa:service ref="isleJvmService" interface="io.monodon.sofastack.sample.isle.facade.IsleJvmService">
     <sofa:binding.jvm/>
 </sofa:service>
 ```
@@ -109,7 +109,7 @@ public class PublishServiceWithClient implements ClientFactoryAware {
         ServiceClient serviceClient = clientFactory.getClient(ServiceClient.class);
         ServiceParam serviceParam = new ServiceParam();
         serviceParam.setInstance(new IsleJvmServiceImpl(
-            "Hello, jvm service service client implementation."));
+            "Hello, jvm service service API方式实现."));
         serviceParam.setInterfaceType(IsleService.class);
         serviceParam.setUniqueId("serviceClientImpl");
         serviceClient.service(serviceParam);
@@ -155,27 +155,27 @@ Require-Module=io.monodon.sofastack.sofa-sample-isle-provider
 
 ### Annotation 方式引用服务
 
-定义 IsleJvmCosumer 类，并在其 isleJvmServiceAnnotationImpl 属性上增加 @SofaReference 注解:
+定义 IsleJvmConsumer 类，并在其 isleJvmServiceAnnotationImpl 属性上增加 @SofaReference 注解:
 
 ```java
-public class IsleJvmCosumer implements ClientFactoryAware {
+public class IsleJvmConsumer implements ClientFactoryAware {
     @SofaReference(uniqueId = "annotationImpl")
-    private IsleJvmService isleJvmServiceByFieldAnnotation;
+    private IsleJvmService isleJvmServiceAnnotation;
 }
 ```
 
-将 IsleJvmCosumer 配置成一个 Spring Bean，保证 @SofaReference 注解生效:
+将 IsleJvmConsumer 配置成一个 Spring Bean，保证 @SofaReference 注解生效:
 
 ```xml
-<bean id="consumer" class="io.monodon.sofastack.sample.isle.consumer.bff.IsleJvmCosumer" init-method="init" />
+<bean id="consumer" class="io.monodon.sofastack.sample.isle.consumer.bff.IsleJvmConsumer" init-method="init" />
 ```
 
 ### API 方式引用服务
 
-IsleJvmCosumer 实现 ClientFactoryAware 接口，并在其 init 方法中引用 JVM 服务:
+IsleJvmConsumer 实现 ClientFactoryAware 接口，并在其 init 方法中引用 JVM 服务:
 
 ```java
-public class IsleJvmCosumer implements ClientFactoryAware {
+public class IsleJvmConsumer implements ClientFactoryAware {
     private ClientFactory clientFactory;
 
     public void init() {
@@ -262,7 +262,7 @@ SOFABoot 模块化测试方法与 Spring Boot 测试方法一致，只需在测�
 ```java
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class SofaBootWithModulesTest {
+public class SofaSampleWithIsleTest {
     @SofaReference
     private IsleJvmService isleJvmService;
 

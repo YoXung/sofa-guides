@@ -15,26 +15,26 @@ import java.io.IOException;
 @RestController
 public class TestController {
     @SofaReference
-    private IsleJvmService isJvmService;
+    private IsleJvmService isleJvmService;
 
     @SofaReference(uniqueId = "annotationImpl")
-    private IsleJvmService isleJvmServiceAnnotationImpl;
+    private IsleJvmService isleJvmServiceAnnotation;
 
     @SofaReference(uniqueId = "serviceClientImpl")
-    private IsleJvmService isleJvmServiceClientImpl;
+    private IsleJvmService isleJvmServiceClient;
 
     @RequestMapping("/serviceWithoutUniqueId")
     public String serviceWithoutUniqueId() throws IOException {
-        return isJvmService.message();
+        return isleJvmService.message();
     }
 
     @RequestMapping("/annotationImplService")
     public String annotationImplService() throws IOException {
-        return isleJvmServiceAnnotationImpl.message();
+        return isleJvmServiceAnnotation.message();
     }
 
     @RequestMapping("/serviceClientImplService")
     public String serviceClientImplService() throws IOException {
-        return isleJvmServiceClientImpl.message();
+        return isleJvmServiceClient.message();
     }
 }

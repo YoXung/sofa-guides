@@ -18,7 +18,7 @@ public class PublishServiceWithClient implements ClientFactoryAware {
         ServiceClient serviceClient = clientFactory.getClient(ServiceClient.class);
         ServiceParam serviceParam = new ServiceParam();
         serviceParam.setInstance(new IsleJvmServiceImpl(
-                "Hello, jvm service service client implementation."));
+                "Hello, jvm service API方式实现."));
         serviceParam.setInterfaceType(IsleJvmService.class);
         serviceParam.setUniqueId("serviceClientImpl");
         serviceClient.service(serviceParam);
