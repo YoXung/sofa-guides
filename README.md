@@ -1,10 +1,12 @@
 
-# SOFAstack Learning
+# SOFAstack Learning Guides
 [![java](https://img.shields.io/badge/Java-17.0.11-F80000?logo=oracle)](https://www.oracle.com/cn/java/technologies/downloads/)
 [![maven](https://img.shields.io/badge/Apache_Maven-3.9.7-C71A36?logo=apachemaven)](https://maven.apache.org/download.cgi)
 
 [![sofa](https://img.shields.io/badge/SOFAStack-4.0.0-1677FF?logo=Alipay)](https://www.sofastack.tech)
-[![springboot](https://img.shields.io/badge/Spring_Boot-3.3.0-6DB33F?logo=springboot)](https://spring.io/projects/spring-boot#learn)
+[![springboot](https://img.shields.io/badge/Spring_Boot_SOFA-3.0.7-6DB33F?logo=springboot)](https://spring.io/projects/spring-boot#learn)
+[![springcloud](https://img.shields.io/badge/Spring_Cloud-2023.0.2-6DB33F?logo=spring)](https://spring.io/projects/spring-cloud#learn)
+[![sca](https://img.shields.io/badge/Spring_Cloud_Alibaba-2023.0.1.0-FF6A00?logo=alibabacloud)](https://github.com/alibaba/spring-cloud-alibaba)
 
 [![idea](https://img.shields.io/badge/IntelliJ_IDEA-2024.1.2-000000?logo=intellijidea)](https://www.jetbrains.com/idea/)
 
@@ -82,6 +84,14 @@ sofa-guides
 ├── sofa-sample-registry 
 |   ├── sofa-sample-registry-client     
 |   └── sofa-sample-registry-server
+├── sofa-cloud-project 
+|   ├── sofa-cloud-apigw   
+|   ├── sofa-cloud-biz-web
+|   ├── sofa-cloud-biz-auth
+|   ├── sofa-cloud-biz-user
+|   ├── sofa-cloud-biz-accounting
+|   ├── sofa-cloud-biz-trading
+|   └── sofa-cloud-biz-
 └──
 ```
 
