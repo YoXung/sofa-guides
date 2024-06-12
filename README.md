@@ -70,7 +70,6 @@ SOFAStack™（Scalable Open Financial Architecture Stack）作为蚂蚁科技�
 ### 工程结构
 ```
 sofa-guides 
-├── sofa-sample-gateway 
 ├── sofa-sample-ddd 
 ├── sofa-sample-rpc 
 |   ├── sofa-sample-rpc-client     

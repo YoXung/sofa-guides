@@ -2,6 +2,7 @@ package io.monodon.sofastack.sample.isle.bootstrap.bff;
 
 import com.alipay.sofa.runtime.api.annotation.SofaReference;
 import io.monodon.sofastack.sample.isle.facade.IsleJvmService;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,17 +24,17 @@ public class TestController {
     @SofaReference(uniqueId = "serviceClientImpl")
     private IsleJvmService isleJvmServiceClient;
 
-    @RequestMapping("/serviceWithoutUniqueId")
+    @GetMapping("/serviceWithoutUniqueId")
     public String serviceWithoutUniqueId() throws IOException {
         return isleJvmService.message();
     }
 
-    @RequestMapping("/annotationImplService")
+    @GetMapping("/annotationImplService")
     public String annotationImplService() throws IOException {
         return isleJvmServiceAnnotation.message();
     }
 
-    @RequestMapping("/serviceClientImplService")
+    @GetMapping("/serviceClientImplService")
     public String serviceClientImplService() throws IOException {
         return isleJvmServiceClient.message();
     }

@@ -9,6 +9,7 @@
     <packaging>pom</packaging>
     <name>sofa-sample</name>
     <description>基于开源版SOFAStack工程示例</description>
+    <url>https://www.sofastack.tech/</url>
 
     <properties>
         <revision>2024.05.09</revision>
@@ -21,7 +22,6 @@
         <module>sofa-sample-rpc</module>
         <module>sofa-sample-isle</module>
         <module>sofa-sample-ddd</module>
-        <module>sofa-sample-gateway</module>
         <module>sofa-sample-registry</module>
         <module>sofa-common</module>
         <module>sofa-cloud-project</module>

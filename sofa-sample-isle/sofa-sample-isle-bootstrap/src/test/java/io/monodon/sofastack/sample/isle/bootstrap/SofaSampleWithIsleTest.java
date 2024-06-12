@@ -2,11 +2,11 @@ package io.monodon.sofastack.sample.isle.bootstrap;
 
 import com.alipay.sofa.runtime.api.annotation.SofaReference;
 import io.monodon.sofastack.sample.isle.facade.IsleJvmService;
-import org.junit.Assert;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author yaoxiang
@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @date 2024/6/3 下午5:26
  */
 @SpringBootTest
-@RunWith(SpringRunner.class)
+@DisplayName("sofa-sample-isle-bootstrap junit5测试")
 public class SofaSampleWithIsleTest {
 
     @SofaReference
@@ -28,10 +28,10 @@ public class SofaSampleWithIsleTest {
 
     @Test
     public void test() {
-        Assert.assertEquals("Hello, jvm service xml implementation.", isleJvmService.message());
-        Assert.assertEquals("Hello, jvm service annotation implementation.",
+        assertEquals("Hello, jvm service xml implementation.", isleJvmService.message());
+        assertEquals("Hello, jvm service annotation implementation.",
                 isleJvmServiceAnnotationImpl.message());
-        Assert.assertEquals("Hello, jvm service service client implementation.",
-                isleJvmServiceClientImpl.message());
+        assertEquals("Hello, jvm service service client implementation.", isleJvmServiceClientImpl.message());
+
     }
 }

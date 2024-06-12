@@ -6,18 +6,18 @@ import com.alipay.sofa.runtime.api.client.ClientFactory;
 import com.alipay.sofa.runtime.api.client.ReferenceClient;
 import com.alipay.sofa.runtime.api.client.param.ReferenceParam;
 import io.monodon.sofastack.sample.isle.facade.IsleJvmService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 
 /**
  * @author yaoxiang
  * @description api调用
  * @date 2024/5/27 下午11:13
  */
+@RequiredArgsConstructor
 public class IsleJvmConsumer implements ClientFactoryAware {
     private ClientFactory clientFactory;
 
-    @Autowired
-    private IsleJvmService isleJvmService;
+    final IsleJvmService isleJvmService;
 
     @SofaReference(uniqueId = "annotationImpl")
     private IsleJvmService isleJvmServiceAnnotation;
