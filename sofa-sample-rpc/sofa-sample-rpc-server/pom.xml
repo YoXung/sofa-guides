@@ -24,6 +24,10 @@
             <artifactId>test-sofa-boot-starter</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.monodon.sofastack</groupId>
+            <artifactId>sofa-sample-rpc-facade</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

@@ -14,6 +14,7 @@ import java.io.IOException;
  * @date 2024/5/17 下午8:52
  */
 @RestController
+@RequestMapping("/isle")
 public class TestController {
     @SofaReference
     private IsleJvmService isleJvmService;
