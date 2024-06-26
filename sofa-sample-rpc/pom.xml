@@ -14,6 +14,10 @@
     <name>sofa-sample-rpc</name>
     <description>sofa-sample-rpc</description>
 
+    <properties>
+        <zkclient.version>0.11</zkclient.version>
+    </properties>
+
     <modules>
         <module>sofa-sample-rpc-client</module>
         <module>sofa-sample-rpc-facade</module>

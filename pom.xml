@@ -16,6 +16,7 @@
         <java.version>17</java.version>
         <sofa.boot.version>4.0.0</sofa.boot.version>
         <spring.boot.version>3.0.7</spring.boot.version>
+        <sofa.health.version>3.23.0</sofa.health.version>
     </properties>
 
     <modules>
