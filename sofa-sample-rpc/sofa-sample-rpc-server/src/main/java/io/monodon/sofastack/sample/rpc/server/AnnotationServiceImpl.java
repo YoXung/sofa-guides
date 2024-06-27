@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
  * @description
  * @date 2024/6/26 上午11:16
  */
-@SofaService(interfaceType = AnnotationService.class, bindings = { @SofaServiceBinding(bindingType = "bolt") })
 @Service
+@SofaService(interfaceType = AnnotationService.class, bindings = { @SofaServiceBinding(bindingType = "bolt") })
 public class AnnotationServiceImpl implements AnnotationService {
     @Override
     public String sayAnnotation(String str) {

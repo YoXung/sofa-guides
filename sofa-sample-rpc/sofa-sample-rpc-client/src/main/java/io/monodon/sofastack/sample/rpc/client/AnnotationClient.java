@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.ws.rs.Path;
+
 /**
  * @author yaoxiang
- * @description 注解方式rpc
+ * @description bolt协议，注解方式rpc
  * @date 2024/6/26 上午11:12
  */
 @RestController
