@@ -10,6 +10,24 @@
     <name>sofa-sample</name>
     <description>基于开源版SOFAStack工程示例</description>
     <url>https://www.sofastack.tech/</url>
+    <licenses>
+        <license/>
+    </licenses>
+    <developers>
+        <developer>
+            <name>YoXung</name>
+            <roles>
+                <role>Architect</role>
+            </roles>
+            <email/>
+        </developer>
+    </developers>
+    <scm>
+        <connection/>
+        <developerConnection/>
+        <tag/>
+        <url/>
+    </scm>
 
     <properties>
         <revision>2024.05.09</revision>

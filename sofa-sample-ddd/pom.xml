@@ -14,14 +14,48 @@
     <name>sofa-sample-ddd</name>
     <description>sofa-sample-ddd</description>
 
+    <modules>
+        <module>sofa-sample-ddd-bootstrap</module>
+        <module>sofa-sample-ddd-adapter</module>
+        <module>sofa-sample-ddd-client</module>
+        <module>sofa-sample-ddd-application</module>
+        <module>sofa-sample-ddd-domain</module>
+        <module>infrastructure/sofa-sample-ddd-repository</module>
+    </modules>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.monodon.sofastack</groupId>
+                <artifactId>sofa-sample-ddd-bootstrap</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.monodon.sofastack</groupId>
+                <artifactId>sofa-sample-ddd-adapter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.monodon.sofastack</groupId>
+                <artifactId>sofa-sample-ddd-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.monodon.sofastack</groupId>
+                <artifactId>sofa-sample-ddd-application</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.monodon.sofastack</groupId>
+                <artifactId>sofa-sample-ddd-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.monodon.sofastack</groupId>
+                <artifactId>sofa-sample-ddd-repository</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 </project>

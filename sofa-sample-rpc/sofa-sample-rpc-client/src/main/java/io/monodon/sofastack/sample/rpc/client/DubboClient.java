@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/rpc")
 public class DubboClient {
-    @SofaReference(interfaceType = DubboService.class, jvmFirst = false, binding = @SofaReferenceBinding(bindingType = "dubbo"))
+    @SofaReference(interfaceType = DubboService.class, jvmFirst = false, binding = @SofaReferenceBinding(bindingType = "dubbo"), uniqueId = "dubboDemo")
     private DubboService dubboService;
     @GetMapping("/dubbo/{str}")
     public String sayClientDubbo(@PathVariable("str") String str) {

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * @date 2024/6/27 下午5:46
  */
 @Service
-@SofaService(interfaceType = DubboService.class, bindings = { @SofaServiceBinding(bindingType = "dubbo") })
+@SofaService(interfaceType = DubboService.class, bindings = { @SofaServiceBinding(bindingType = "dubbo") }, uniqueId = "dubboDemo")
 public class DubboServiceImpl implements DubboService {
     @Override
     public String sayDubbo(String str) {
