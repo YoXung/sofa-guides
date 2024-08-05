@@ -7,7 +7,7 @@
     <artifactId>sofa-guides</artifactId>
     <version>${revision}</version>
     <packaging>pom</packaging>
-    <name>sofa-sample</name>
+    <name>sofa-guides</name>
     <description>基于开源版SOFAStack工程示例</description>
     <url>https://www.sofastack.tech/</url>
     <licenses>
