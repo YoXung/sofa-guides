@@ -15,9 +15,9 @@
 	<description>sofa-cloud-project</description>
 
 	<properties>
-		<spring-cloud.version>2023.0.2</spring-cloud.version>
-		<spring-cloud-alibaba.version>2023.0.1.0</spring-cloud-alibaba.version>
-		<healthcheck.version>3.9.1</healthcheck.version>
+		<spring-cloud.version>2023.0.3</spring-cloud.version>
+		<spring-cloud-alibaba.version>2023.0.1.2</spring-cloud-alibaba.version>
+		<healthcheck.version>3.24.0</healthcheck.version>
 	</properties>
 
 	<modules>

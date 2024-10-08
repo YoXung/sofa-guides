@@ -32,9 +32,8 @@
     <properties>
         <revision>2024.05.09</revision>
         <java.version>17</java.version>
-        <sofa.boot.version>4.0.0</sofa.boot.version>
-        <spring.boot.version>3.0.7</spring.boot.version>
-        <sofa.health.version>3.23.0</sofa.health.version>
+        <sofa.boot.version>4.3.0</sofa.boot.version>
+        <spring.boot.version>3.2.6</spring.boot.version>
     </properties>
 
     <modules>
