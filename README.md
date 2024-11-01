@@ -6,9 +6,9 @@
 [![sofa](https://img.shields.io/badge/SOFAStack-4.3.0-1677FF?logo=Alipay)](https://www.sofastack.tech)
 [![springboot](https://img.shields.io/badge/Spring_Boot_SOFA-3.2.6-6DB33F?logo=springboot)](https://spring.io/projects/spring-boot#learn)
 [![springcloud](https://img.shields.io/badge/Spring_Cloud-2023.0.3-6DB33F?logo=spring)](https://spring.io/projects/spring-cloud#learn)
-[![sca](https://img.shields.io/badge/Spring_Cloud_Alibaba-2023.0.1.2-FF6A00?logo=alibabacloud)](https://github.com/alibaba/spring-cloud-alibaba)
+[![sca](https://img.shields.io/badge/Spring_Cloud_Alibaba-2023.0.1.3-FF6A00?logo=alibabacloud)](https://github.com/alibaba/spring-cloud-alibaba)
 
-[![idea](https://img.shields.io/badge/IntelliJ_IDEA-2024.2.3-000000?logo=intellijidea)](https://www.jetbrains.com/idea/)
+[![idea](https://img.shields.io/badge/IntelliJ_IDEA-2024.2.4-000000?logo=intellijidea)](https://www.jetbrains.com/idea/)
 
 SOFAStack™（Scalable Open Financial Architecture Stack）作为蚂蚁科技自主研发的金融级分布式中间件，被广泛应用在包括支付、借贷、信用、基金、保险等全金融场景。
 

@@ -16,6 +16,7 @@
 
     <properties>
         <zkclient.version>0.11</zkclient.version>
+        <sofa.health.version>3.24.0</sofa.health.version>
     </properties>
 
     <modules>
